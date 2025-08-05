@@ -1,8 +1,36 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  serial,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
   age: integer().notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
+});
+
+export const jobsTable = pgTable("jobs", {
+  id: serial("id").primaryKey(),
+  slug: varchar("slug").unique().notNull(),
+  title: varchar("title").notNull(),
+  type: varchar("type").notNull(),
+  locationType: varchar("location_type").notNull(),
+  location: varchar("location"),
+  description: varchar("description"),
+  salary: integer("salary").notNull(),
+  companyName: varchar("company_name").notNull(),
+  applicationEmail: varchar("application_email"),
+  applicationUrl: varchar("application_url"),
+  companyLogoUrl: varchar("company_logo_url"),
+  approved: boolean("approved").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updateAt: timestamp("updated_at")
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 });
