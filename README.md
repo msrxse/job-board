@@ -55,7 +55,7 @@ bun tsx src/db/seed.ts
 ## Ensure docker container is started
 
 ```
-docker start drizzle-postgres
+docker start job-board-drizzle-postgres
 ```
 
 ## How to check postgres database in docker volume
