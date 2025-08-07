@@ -1,3 +1,4 @@
+import FormSubmitButton from "@/components/FormSubmitButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -112,9 +113,7 @@ export default async function JobFilterSidebar({
             />
             <Label htmlFor="remote">Remote jobs</Label>
           </div>
-          <Button type="submit" className="w-full">
-            Filter jobs
-          </Button>
+          <FormSubmitButton className="w-full">Filter jobs</FormSubmitButton>
         </div>
       </form>
     </aside>
