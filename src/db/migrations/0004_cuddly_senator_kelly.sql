@@ -1,0 +1,5 @@
+DROP INDEX "search_index";--> statement-breakpoint
+CREATE INDEX "search_index" ON "jobs" USING gin ((
+          setweight(to_tsvector('english', "title"), 'A') ||
+          setweight(to_tsvector('english', "company_name"), 'B')
+      ));
