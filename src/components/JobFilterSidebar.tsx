@@ -59,7 +59,8 @@ export default async function JobFilterSidebar({
 
   return (
     <aside className="bg-background sticky top-0 h-fit rounded-lg border p-4 md:w-[200px]">
-      <form action={filterJobs}>
+      {/* this "key" allows react to throw away the form values when user resets the URL */}
+      <form action={filterJobs} key={JSON.stringify(defaultValues)}>
         {/* this div is necessary since when we use server-actions inside server-components, 
         nextJS automatically adds a hidden input that adds the id of the server-component 
         and that will mess up our spacing */}
