@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { forwardRef } from "react";
 
 /**
- * We are not using the chadcn select because it is really a JD dropdown
+ * We are not using the chadcn select because it is really a JS dropdown
  * and we need a real HTML select so it can work in situations where JS is
  * not available.
  */
