@@ -21,6 +21,8 @@ import { Label } from "@/components/ui/label";
 import RichTextEditor from "@/components/RichTextEditor";
 import { draftToMarkdown } from "markdown-draft-js";
 import LoadingButton from "@/components/LoadingButton";
+import { createJobPosting } from "@/app/jobs/new/actions";
+import { redirect } from "next/navigation";
 
 export default function NewJobForm() {
   const form = useForm<CreateJobValues>({
@@ -38,7 +40,27 @@ export default function NewJobForm() {
   } = form;
 
   async function onSubmit(values: CreateJobValues) {
-    console.log(JSON.stringify(values, null, 2));
+    // We need the formData instead because of the file sent
+    const formData = new FormData();
+
+    Object.entries(values).forEach(([keyof, value]) => {
+      if (value) {
+        formData.append(keyof, value);
+      }
+    });
+
+    try {
+      await createJobPosting(formData);
+    } catch (error) {
+      // catch any errors here even if you don't expect any
+      // the error page would catch it anyway but the user would loose the
+      // form data which would be annoying
+
+      // The user would not loose the form and just try again
+      alert("Something went wrong, please try again");
+    }
+
+    redirect("/job-submitted");
   }
 
   return (
