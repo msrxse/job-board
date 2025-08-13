@@ -8,6 +8,8 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import z from "zod";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -50,3 +52,6 @@ export const jobsTable = pgTable(
     ),
   ],
 );
+
+export const JobsTableSchema = createInsertSchema(jobsTable);
+export type JobsTableSchemaType = z.infer<typeof JobsTableSchema>;

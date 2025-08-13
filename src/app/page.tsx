@@ -26,7 +26,9 @@ function getTitle({ q, type, location, remote }: JobFilterValues) {
   return `${titlePrefix}${titleSuffix}`;
 }
 
-export async function generateMetadata({ searchParams }: PageProps): Metadata {
+export async function generateMetadata({
+  searchParams,
+}: PageProps): Promise<Metadata> {
   const { q, type, location, remote } = await searchParams;
   return {
     title: `${getTitle({

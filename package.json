@@ -27,6 +27,7 @@
     "dotenv": "^17.2.1",
     "draft-js": "^0.11.7",
     "drizzle-orm": "^0.44.4",
+    "drizzle-zod": "^0.8.3",
     "lucide-react": "^0.536.0",
     "markdown-draft-js": "^2.4.0",
     "nanoid": "^5.1.5",
@@ -36,6 +37,7 @@
     "react-dom": "19.1.0",
     "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.62.0",
+    "react-markdown": "^10.1.0",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.0.14"
   },

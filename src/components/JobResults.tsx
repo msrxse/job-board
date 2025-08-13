@@ -1,8 +1,9 @@
-import JobListItem from "@/components/jobListItem";
+import JobListItem from "@/components/JobListItem";
 import { db } from "@/db";
 import { jobsTable } from "@/db/schema";
 import { JobFilterValues } from "@/lib/validation";
 import { asc, eq, sql, and } from "drizzle-orm";
+import Link from "next/link";
 
 interface JobResultsProps {
   filterValues: JobFilterValues;
@@ -53,7 +54,9 @@ export default async function newFunction({ filterValues }: JobResultsProps) {
   return (
     <div className="grow space-y-4">
       {jobs.map((job) => (
-        <JobListItem job={job} key={job.id} />
+        <Link key={job.id} href={`/jobs/${job.slug}`} className="block">
+          <JobListItem job={job} />
+        </Link>
       ))}
       {jobs.length === 0 && (
         <p className="m-auto text-center">
