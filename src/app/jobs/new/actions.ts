@@ -48,20 +48,6 @@ export async function createJobPosting(formData: FormData) {
   //   );
   //   companyLogoUrl = blob.url;
   // }
-  console.log({
-    slug,
-    title: title.trim(),
-    type,
-    companyName: companyName.trim(),
-    companyLogoUrl,
-    locationType,
-    location,
-    applicationEmail: applicationEmail?.trim(),
-    applicationUrl: applicationUrl?.trim(),
-    description: description?.trim(),
-    salary: parseInt(salary),
-    approved: true, // we will remove this afterwards
-  });
 
   await db.insert(jobsTable).values({
     slug,
