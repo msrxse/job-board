@@ -4,6 +4,11 @@ interface MarkdownProps {
   children: string;
 }
 
+/**
+ * Since this is a server-component we save this library
+ * on the client size JS bundle size.
+ *
+ */
 export default function Markdown({ children }: MarkdownProps) {
   return (
     <ReactMarkdown

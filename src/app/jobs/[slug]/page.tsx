@@ -27,6 +27,22 @@ const getJob = cache(async (slug: string) => {
 });
 
 /**
+ * We tell NextJS what are the slugs of the list links so
+ * it can prefetch them at compile time.
+ *
+ * Then when user clicks links - the data will be
+ * there and detail pages will load instantly.
+ */
+export async function generateStaticParams() {
+  const jobs = await db
+    .select({ slug: jobsTable.slug })
+    .from(jobsTable)
+    .where(eq(jobsTable.approved, true));
+
+  return jobs;
+}
+
+/**
  * This metadata depends on the data received from the db (is not static)
  * You cant share data directly - you need to fetch getJob() again
  */
