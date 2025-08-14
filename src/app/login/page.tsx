@@ -8,15 +8,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { auth, signIn } from "@/app/auth";
+import { Github } from "lucide-react";
+import { OauthButtons } from "@/app/login/_components/oauth-buttons";
 
 export default async function Login() {
   const session = await auth();
-  console.log(session);
 
   if (session) return redirect("/admin");
 
@@ -30,36 +29,8 @@ export default async function Login() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            id="loginForm"
-            action={async (formData) => {
-              "use server";
-              await signIn("credentials", formData);
-            }}
-          >
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" name="password" type="password" required />
-              </div>
-            </div>
-          </form>
+          <OauthButtons />
         </CardContent>
-        <CardFooter>
-          <Button type="submit" form="loginForm" className="w-full">
-            Login
-          </Button>
-        </CardFooter>
       </Card>
     </main>
   );
