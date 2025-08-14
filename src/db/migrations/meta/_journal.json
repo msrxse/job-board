@@ -43,6 +43,13 @@
       "when": 1754586667728,
       "tag": "0005_military_leader",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1755175613400,
+      "tag": "0006_left_tarantula",
+      "breakpoints": true
     }
   ]
 }
