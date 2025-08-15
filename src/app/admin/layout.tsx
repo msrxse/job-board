@@ -1,3 +1,4 @@
+import AdminNavbar from "@/app/admin/jobs/[slug]/AdminNavbar";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +6,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <AdminNavbar />
+      {children}
+    </div>
+  );
 }
